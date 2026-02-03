@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/todo', (req, res) => {
+app.post('/todo', async (req, res) => {
     const createPayload = req.body;
     const parsePayload  = createTodo.safeParse(createPayload);
     if(!parsePayload.success){
@@ -18,7 +18,7 @@ app.post('/todo', (req, res) => {
         });
         return;
     }
-    todo.create({
+    await todo.create({
         title: createPayload.title,
         description: createPayload.description,
     })
