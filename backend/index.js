@@ -36,13 +36,22 @@ app.get('/todos', async (req, res) => {
     });
 })
 
-app.put('/completed', (req, res) => {
+app.put('/completed', async(req, res) => {
     const updatePayload = req.body;
     const parsePayload = updateTodo.safeParse(updatePayload);
     if(!parsePayload.success){
-        return res.status(411).json({
+        res.status(411).json({
             msg: "You sent the wrong inputs",
         });
         return;
     }
+    await todo.update({
+        _id: req.body.id,
+    }, {
+        completed: true,
+    })
+
+    res.json({
+        msg: "Todo marked as completed",
+    })
 })
