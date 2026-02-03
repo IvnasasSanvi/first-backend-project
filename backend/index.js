@@ -21,6 +21,7 @@ app.post('/todo', async (req, res) => {
     await todo.create({
         title: createPayload.title,
         description: createPayload.description,
+        completed: false,
     })
 
     res.json({
@@ -28,8 +29,11 @@ app.post('/todo', async (req, res) => {
     })
 })
 
-app.get('/todos', (req, res) => {
-
+app.get('/todos', async (req, res) => {
+    const todos = await todo.find();
+    res.json({
+        todos,
+    });
 })
 
 app.put('/completed', (req, res) => {
