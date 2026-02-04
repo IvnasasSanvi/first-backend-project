@@ -55,3 +55,7 @@ app.put('/completed', async(req, res) => {
         msg: "Todo marked as completed",
     })
 })
+
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
