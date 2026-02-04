@@ -3,8 +3,11 @@ import express from 'express';
 // import bodyParser from 'body-parser';
 // import userRoutes from './routes/userRoutes.js';
 // import productRoutes from './routes/productRoutes.js';  
-const {createTodo, updateTodo} = require('./types.js');
-const {todo} = require('./db.js');
+//const {createTodo, updateTodo} = require('./types.js');
+import { createTodo, updateTodo } from "./types.js";
+
+//const {todo} = require('./db.js');
+import { todo } from './db.js';
 const app = express();
 
 app.use(express.json());
